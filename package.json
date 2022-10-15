@@ -1,9 +1,16 @@
 {
-  "name": "cowbird_v2",
-  "version": "0.0.0",
+  "name": "cowbird",
+  "version": "0.0.1",
   "description": "A cli for creating a serverless backend",
   "type": "module",
   "exports": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kreechr-org/cowbird.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kreechr-org/cowbird/issues"
+  },
   "scripts": {
     "dev": "nodemon --exec npm run build",
     "test": "jest --passWithNoTests",
@@ -14,14 +21,18 @@
     "prepare": "husky install",
     "lint": "eslint src"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "aws",
+    "lambda",
+    "serverless"
+  ],
   "bin": {
     "cowbird": "dist/index.js",
-    "cb": "dist/index.js",
-    "@kreechr/cowbird": "dist/index.js"
+    "cb": "dist/index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "@macutko",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.4",
@@ -53,5 +64,9 @@
   "files": [
     "dist/**/*",
     "templates/core/**/*"
-  ]
+  ],
+  "engines": {
+    "node": ">=16.13.1",
+    "npm": ">=8.1.2"
+  }
 }
