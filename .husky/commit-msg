@@ -1,0 +1,12 @@
+#!/bin/bash
+. "$(dirname "$0")/_/husky.sh"
+
+commit_message="$(cat "$1")"
+commit_regex='(((feat|fix|chore|refactor|style|test|docs)(\((\w{0,15})\))?))(\:\s.*\S.*)';
+
+if  ! echo "$commit_message" | grep -qE  $commit_regex ; then
+      echo $commit_message
+      echo "Your commit message must conform to the Semantic Commit Messages syntax"
+      echo "https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716"
+      exit 1
+fi

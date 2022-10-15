@@ -1,0 +1,13 @@
+{
+  "verbose": true,
+  "ignore": [
+    "dist/**/*"
+  ],
+  "watch": [
+    "src/**/*"
+  ],
+  "events": {
+    "restart": "rm -rf dist/",
+    "exit": "chmod -R +x dist/"
+  }
+}

@@ -1,0 +1,1 @@
+export {exampleString} from "./example";

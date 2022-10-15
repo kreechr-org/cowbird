@@ -1,0 +1,48 @@
+{
+  "name": "cowbird_v2",
+  "version": "0.0.0",
+  "description": "A cli for creating a serverless backend",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "dev": "nodemon --exec npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=development tsc -w",
+    "build:prod": "NODE_ENV=production tsc",
+    "clean": "rm -rf dist/",
+    "start": "npm run clean && npm run build:prod",
+    "prepare": "husky install",
+    "lint": "eslint src"
+  },
+  "keywords": [],
+  "bin": {
+    "cowbird": "dist/index.js",
+    "@kreechr/cowbird": "dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/archiver": "^5.3.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.7.23",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "chalk": "^5.0.1",
+    "eslint": "^8.24.0",
+    "husky": "^8.0.1",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "archiver": "^5.3.1",
+    "commander": "^9.4.1",
+    "esbuild": "^0.15.10",
+    "fs-extra": "^10.1.0",
+    "log-symbols": "^5.1.0",
+    "ora": "^6.1.2"
+  },
+  "files": [
+    "dist/**/*",
+    "templates/core/**/*"
+  ]
+}
