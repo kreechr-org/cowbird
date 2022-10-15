@@ -1,6 +1,6 @@
 {
   "name": "cowbird",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A cli for creating a serverless backend",
   "type": "module",
   "exports": "./dist/index.js",
@@ -12,12 +12,11 @@
     "url": "https://github.com/kreechr-org/cowbird/issues"
   },
   "scripts": {
-    "dev": "nodemon --exec npm run build",
+    "dev": "npm run clean && nodemon --exec \"npm run build -- -w\"",
     "test": "jest --passWithNoTests",
-    "build": "NODE_ENV=development tsc -w",
-    "build:prod": "NODE_ENV=production tsc",
+    "build": "tsc",
     "clean": "rm -rf dist/",
-    "start": "npm run clean && npm run build:prod",
+    "start": "npm run clean && npm run build",
     "prepare": "husky install",
     "lint": "eslint src"
   },
@@ -28,8 +27,8 @@
     "serverless"
   ],
   "bin": {
-    "cowbird": "dist/index.js",
-    "cb": "dist/index.js"
+    "cowbird": "./dist/index.js",
+    "cb": "./dist/index.js"
   },
   "author": "@macutko",
   "license": "MIT",

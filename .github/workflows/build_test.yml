@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install -g pnpm
       - run: pnpm install --frozen-lockfile
-      - run: npm run build:prod
+      - run: npm run build
       - run: npm test
       - name: Upload the built artifact
         uses: actions/upload-artifact@v3
