@@ -28,7 +28,6 @@ export class DeployService extends GenericService {
     }
 
     updateDeploy() {
-        //TODO: fix double calls on cli
         const lambdaClient = new LambdaClient({});
 
         const updateCommands = readdirSync(this.outDir)
@@ -43,6 +42,5 @@ export class DeployService extends GenericService {
                 }));
 
         Promise.all(updateCommands).then(() => Logger.info("Done")).catch((e) => Logger.error(e.message));
-
     }
 }
