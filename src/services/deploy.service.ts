@@ -15,7 +15,7 @@ export class DeployService extends GenericService {
         await runProc("Running terraform plan",
             `terraform plan -out=${this.planJson}`,
             this.iacDir);
-        Logger.info("Done");
+        Logger.info("Done. If running in CLI, just press [d] to deploy");
     }
 
     async fullDeploy() {
@@ -28,12 +28,12 @@ export class DeployService extends GenericService {
     }
 
     updateDeploy() {
-        const lambdaClient = new LambdaClient({});
 
         const updateCommands = readdirSync(this.outDir)
             .filter((fileOrDir) => fileOrDir.match(/.*\.(zip?)/ig))
             .map((zipFile) =>
                 runWithSpinnerAsync(`Updating ${zipFile.split(".")[0]}`, async () => {
+                    const lambdaClient = new LambdaClient({});
                     const updateFunctionCodeCommand = new UpdateFunctionCodeCommand({
                         FunctionName: zipFile.split(".")[0],
                         ZipFile: readFileSync((path.join(this.outDir, `${zipFile}`))),
