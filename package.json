@@ -1,6 +1,6 @@
 {
   "name": "cowbird",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "A cli for creating a serverless backend",
   "type": "module",
   "exports": "./dist/index.js",
@@ -62,7 +62,7 @@
   },
   "files": [
     "dist/**/*",
-    "templates/core/**/*"
+    "templates/**/*"
   ],
   "engines": {
     "node": ">=16.13.1",

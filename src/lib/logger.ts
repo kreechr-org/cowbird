@@ -35,11 +35,11 @@ export const displayLogo = (): void => {
 export const postInitInstructions = (projectName: string): void => {
     console.log(chalk.green("Cowbird has been successfully installed!"));
     console.log(chalk.green("To get started, run the following:"));
-    console.log(chalk.gray(`\t 1. cd ${projectName} && npm i`));
-    console.log(chalk.gray("\t 2. cd terraform/ && terraform init"));
-    console.log(chalk.gray("\t 3. Check variables.tf and update as required"));
+    console.log(chalk.white(`\t 1. cd ${projectName} && npm i`));
+    console.log(chalk.white("\t 2. cd terraform/ && terraform init"));
+    console.log(chalk.white("\t 3. Check variables.tf and update as required"));
     console.log(chalk.green("After you successfully initialized your IaC, run the following command to start the build:"));
-    console.log(chalk.gray("\t cowbird build -w"));
+    console.log(chalk.white("\t cowbird build -w"));
     console.log(chalk.green("Then follow the instructions on the screen to deploy your project."));
 };
 

@@ -1,9 +1,0 @@
-{
-  "deployDir": "",
-  "fullDeploy": "",
-  "fastDeploy": "",
-  "build": {},
-  "commands": {
-    "e": "echo \"this is an example\""
-  }
-}

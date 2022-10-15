@@ -41,6 +41,9 @@ export class DeployService extends GenericService {
                     return await lambdaClient.send(updateFunctionCodeCommand);
                 }));
 
-        Promise.all(updateCommands).then(() => Logger.info("Done")).catch((e) => Logger.error(e.message));
+        Promise.all(updateCommands).then(() => Logger.info("Done")).catch((e) => Logger.error(e.message, {
+            kill: false,
+            ourFault: false
+        }));
     }
 }
