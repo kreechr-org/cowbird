@@ -1,35 +1,37 @@
 variable "lambdaName" {
-  type = string
+  description = "The name of the Lambda function"
+  type        = string
 }
 variable "memory" {
-  type    = number
-  default = 768
+  description = "The amount of memory in MB your Lambda Function can use at runtime"
+  type        = number
+  default     = 768
 }
 variable "timeout" {
-  type    = number
-  default = 300
+  description = "The amount of time your Lambda Function has to run in seconds"
+  type        = number
+  default     = 300
 }
 variable "runtime" {
-  type    = string
-  default = "nodejs16.x"
+  description = "The runtime environment for the Lambda Function"
+  type        = string
+  default     = "nodejs16.x"
 }
-variable "file_path" {
-  type = string
+variable "zip_path" {
+  description = "The path to the Lambda Function's deployment package within the local filesystem. This zip will be uploaded to s3"
+  type        = string
 }
 variable "handler" {
-  type    = string
-  default = "index.handler"
+  description = "The function entrypoint in your code. The default is the index files and the handler function"
+  type        = string
+  default     = "index.handler"
 }
 variable "role" {
-  type = string
+  description = "The ARN of the IAM role to attach to the Lambda function."
+  type        = string
 }
-variable "s3_bucket" {
-  type = string
-}
-variable "source_code_key" {
-  type    = string
-  default = ""
-}
+
 variable "executing_agw" {
-  type = string
+  description = "The Api Gateway that will act as the trigger for the lambda"
+  type        = string
 }

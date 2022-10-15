@@ -18,16 +18,15 @@ export class BuildService extends GenericService implements IBuildService {
 
     build() {
         return build({
-            outdir: path.join(this.buildRoot, "dist"),
+            outdir: this.outDir,
             entryPoints: findEntryPoints(path.join(this.buildRoot, "src"), ["lib"], ["index.ts"]),
             platform: "node",
             watch: this.watch,
             treeShaking: true,
             bundle: true,
             minify: !this.watch,
-            plugins: [CowbirdPlugin],
+            plugins: [CowbirdPlugin]
         });
     }
-
 
 }

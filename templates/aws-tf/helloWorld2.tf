@@ -1,8 +1,7 @@
 module "hello_world2" {
   source        = "./lambda_module"
   lambdaName    = "helloWorld2"
-  file_path     = "${path.module}/../dist/helloWorld2.zip"
-  s3_bucket     = aws_s3_bucket.source_code_bucket.id
+  zip_path     = "${path.module}/../dist/helloWorld2.zip"
   executing_agw = aws_apigatewayv2_api.api_gw.execution_arn
   role          = aws_iam_role.iam_for_lambda.arn
 }

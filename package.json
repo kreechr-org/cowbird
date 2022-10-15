@@ -17,6 +17,7 @@
   "keywords": [],
   "bin": {
     "cowbird": "dist/index.js",
+    "cb": "dist/index.js",
     "@kreechr/cowbird": "dist/index.js"
   },
   "author": "",
