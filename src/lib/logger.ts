@@ -6,17 +6,28 @@ const GITHUB_URL = "https://github.com/kreechr-org/cowbird/issues";
 
 
 export const displayLogo = (): void => {
+    //  __________
+    //  / ___  ___ \             ,ad8888ba,   88888888ba
+    // / / @ \/ @ \ \           d8"'    `"8b  88      "8b
+    // \ \___/\___/ /\         d8'            88      ,8P
+    //  \____\/____/||         88             88aaaaaa8P'
+    //  /     /\\\\\//         88             88""""""8b,
+    // |     |\\\\\\           Y8,            88      `8b
+    //  \      \\\\\\           Y8a.    .a8P  88      a8P
+    //    \______/\\\\           `"Y8888Y"'   88888888P"
+    //     _||_||_
 
-    console.log(chalk.cyan("  __________\n") +
-        chalk.cyan(" / ___  ___ \\\n") +
-        chalk.cyan("/ / @ \\/ @ \\ \\\n") +
-        chalk.cyan("\\ \\___/\\___/ /\\\n") +
-        chalk.cyan(" \\____\\/____/||\n") +
-        chalk.cyan(" /     /\\\\\\\\\\//\n") +
-        chalk.cyan("|     |\\\\\\\\\\\\\n") +
-        chalk.cyan(" \\      \\\\\\\\\\\\\n") +
-        chalk.cyan("   \\______/\\\\\\\\\n") +
-        chalk.cyan("    _||_||_"));
+
+    console.log(chalk.cyan("  __________            "));
+    console.log(chalk.cyan(" / ___  ___ \\             ,ad8888ba,   88888888ba"));
+    console.log(chalk.cyan("/ / @ \\/ @ \\ \\           d8\"'    `\"8b  88      \"8b"));
+    console.log(chalk.cyan("\\ \\___/\\___/ /\\         d8'            88      ,8P  "));
+    console.log(chalk.cyan(" \\____\\/____/||         88             88aaaaaa8P'"));
+    console.log(chalk.cyan(" /     /\\\\\\\\\\//         88             88\"\"\"\"\"\"8b,"));
+    console.log(chalk.cyan("|     |\\\\\\\\\\\\           Y8,            88      `8b"));
+    console.log(chalk.cyan(" \\      \\\\\\\\\\\\           Y8a.    .a8P  88      a8P"));
+    console.log(chalk.cyan("   \\______/\\\\\\\\           `\"Y8888Y\"'   88888888P\""));
+    console.log(chalk.cyan("    _||_||_             "));
 
     console.log("\n");
 };
@@ -44,7 +55,7 @@ export class Logger {
             minute: "2-digit",
             second: "2-digit"
         });
-        console.log("[" + chalk.gray(time) + "]" + logSymbols.info + " " + message);
+        console.log(" [" + chalk.gray(time) + "]" + logSymbols.info + " " + message);
     };
     static error = (message: string, options?: { kill?: boolean, ourFault?: boolean }): void => {
         console.log(logSymbols.error + chalk.red(" Ran into a problem"));
