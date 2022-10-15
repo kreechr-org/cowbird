@@ -1,6 +1,6 @@
 import {Logger} from "../logger.js";
 
-export const runWithSpinnerAsync = async (message: string, command: () => Promise<void>) => {
+export const runWithSpinnerAsync = async <T>(message: string, command: () => Promise<T | void>) => {
     const spinner = Logger.loading(message);
 
     try {
