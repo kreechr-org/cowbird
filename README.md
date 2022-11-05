@@ -53,5 +53,5 @@ similar [naming patterns](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8
 
 # License
 
-Welly is open source software licensed as MIT.
+Cowbird is open source software licensed as MIT.
 
