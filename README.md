@@ -8,6 +8,12 @@ Create a serverless REST Api backend system in minutes with
 
 Cowbird currently works on macOS and Linux. Windows has not been tested yet.
 
+# Prerequisites
+
+1. Terraform
+2. AWS account configured on your machine
+3. NodeJS 
+
 # Creating an App 🔨
 
 **You'll need to have Node 16 or higher.**
