@@ -32,7 +32,7 @@ which we recommend reading. It will explain all the details on how to use this l
 As this project started due to my own needs I am adding flexibility as I see fit. However, if there becomes demand for
 particular configuration options I will add them.
 
-## Build in type checking
+## Built in type checking
 
 Currently, the builds run esbuild to have fast development cycles. This means that for your CI/CD builds you should run
 a

@@ -8,6 +8,6 @@ export const runWithSpinnerAsync = async <T>(message: string, command: () => Pro
         spinner.succeed();
     } catch (e) {
         spinner.fail();
-        Logger.error(e.message, {kill: true, ourFault: true});
+        Logger.error(e.message, {kill: false, ourFault: true});
     }
 };
