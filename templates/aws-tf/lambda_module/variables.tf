@@ -35,3 +35,9 @@ variable "executing_agw" {
   description = "The Api Gateway that will act as the trigger for the lambda"
   type        = string
 }
+
+variable "environment" {
+  description = "The environment variables to pass to the Lambda function"
+  type        = map(string)
+  default     = {}
+}
