@@ -7,6 +7,9 @@ resource "aws_lambda_function" "lambdaFunction" {
   filename         = var.zip_path
   handler          = var.handler
   source_code_hash = filebase64sha256(var.zip_path)
+  environment {
+    variables = var.environment
+  }
 }
 
 resource "aws_cloudwatch_log_group" "lambdaFunction_logs" {
