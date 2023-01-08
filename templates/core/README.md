@@ -49,6 +49,24 @@ does not support typechecking. So your CI/CD should look something like
 
 1. tsc
 2. cowbird build
-3. tf plan & tf apply / cowbird deploy 
+3. tf plan & tf apply / cowbird deploy
 
+# Config
 
+Currently, there is very limited configurability of this tool. If you have suggestions to improve, please do reach out!
+
+## Change a name of the function
+
+If you want to deploy another instance of your function (e.g. `helloWorld` being the prod and `helloWorld-local` being
+the one you are messing around) all you need to do is add an output to your terraform file called the same way your
+default name is.
+
+The default name is derived from the name of the directory your function lives in. This produces a zip
+with the same name and this is then used as a name of the function. To override this name place it into your outputs
+like so:
+
+```terraform
+output "helloWorld" {
+   value = module.hello_world.name
+}
+```

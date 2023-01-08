@@ -23,6 +23,7 @@ export class TemplateService {
     private createTemplate(destinationPath: string): void {
         const coreTemplate = path.join(this.templateDir, "core");
         fs_extra.copySync(coreTemplate, destinationPath);
+        fs_extra.renameSync(`${destinationPath}/.example_gitignore`, `${destinationPath}/.gitignore`);
 
         const iacTemplate = path.join(this.templateDir, this.templateName);
         fs_extra.copySync(iacTemplate, path.join(destinationPath, "terraform"));

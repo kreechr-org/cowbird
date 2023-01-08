@@ -57,8 +57,8 @@ export class MainCli {
     updateCommand() {
         this.program.command("update")
             .description("Do a deploy of just the code")
-            .action(() => {
-                new DeployService().updateDeploy();
+            .action(async () => {
+                await new DeployService().updateDeploy();
             });
         return this;
     }

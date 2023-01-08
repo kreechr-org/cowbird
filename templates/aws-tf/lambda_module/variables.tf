@@ -39,5 +39,7 @@ variable "executing_agw" {
 variable "environment" {
   description = "The environment variables to pass to the Lambda function"
   type        = map(string)
-  default     = {}
+  default     = {
+    placeholder = "cannot be empty object"
+  }
 }

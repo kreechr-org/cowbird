@@ -5,6 +5,7 @@ import {existsSync, readdirSync, readFileSync, unlinkSync} from "fs";
 import {Logger} from "../lib/logger.js";
 import {LambdaClient, UpdateFunctionCodeCommand} from "@aws-sdk/client-lambda";
 import {runWithSpinnerAsync} from "../lib/procUtils/runWithSpinnerAsync.js";
+import {TFOutput} from "../lib/TFOutput.js";
 
 export class DeployService extends GenericService {
 
@@ -27,15 +28,20 @@ export class DeployService extends GenericService {
         }
     }
 
-    updateDeploy() {
+    async updateDeploy() {
+        const tfOutput = new TFOutput(this.iacDir);
+        await tfOutput.init();
 
         const updateCommands = readdirSync(this.outDir)
             .filter((fileOrDir) => fileOrDir.match(/.*\.(zip?)/ig))
             .map((zipFile) =>
                 runWithSpinnerAsync(`Updating ${zipFile.split(".")[0]}`, async () => {
                     const lambdaClient = new LambdaClient({});
+
+                    const defaultFnName = zipFile.split(".")[0];
+                    const outputName = tfOutput.getFunctionByZip(defaultFnName);
                     const updateFunctionCodeCommand = new UpdateFunctionCodeCommand({
-                        FunctionName: zipFile.split(".")[0],
+                        FunctionName: outputName === "" ? defaultFnName : outputName,
                         ZipFile: readFileSync((path.join(this.outDir, `${zipFile}`))),
                     });
                     return await lambdaClient.send(updateFunctionCodeCommand);
