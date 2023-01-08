@@ -1,6 +1,6 @@
 {
   "name": "cowbird",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A cli for creating a serverless backend",
   "type": "module",
   "exports": "./dist/index.js",
