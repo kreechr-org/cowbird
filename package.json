@@ -13,7 +13,7 @@
   },
   "scripts": {
     "dev": "npm run clean && nodemon --exec \"npm run build -- -w\"",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "build": "tsc",
     "clean": "rm -rf dist/",
     "start": "npm run clean && npm run build",
