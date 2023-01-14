@@ -22,7 +22,9 @@ export class MainCli {
             .description("Build a project")
             .option("-w, --watch", "Run in watch mode", false)
             .action((options) => {
-                new BuildService(options).build().catch(e => Logger.error(e));
+                new BuildService(options).build().catch(e => {
+                    Logger.error(e);
+                });
             });
         return this;
     }

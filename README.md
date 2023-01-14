@@ -65,6 +65,14 @@ commit-message hook. Please follow them. It would be nice if the branches follow
 similar [naming patterns](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) `feature/xxx`
 , `fix/xxx`, `chore/xxx` etc.
 
+## Debug
+
+To run debug commands run
+
+```shell
+export COWBIRD_DEBUG=true
+```
+
 # Troubleshooting
 
 ## Cowbird is not recognised

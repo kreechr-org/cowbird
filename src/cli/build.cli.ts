@@ -1,5 +1,5 @@
 import readline from "readline";
-import {displayLogo} from "../lib/logger.js";
+import {displayLogo, Logger} from "../lib/logger.js";
 import chalk from "chalk";
 import {BuildOptions} from "esbuild";
 import {DeployService} from "../services/deploy.service.js";
@@ -16,12 +16,12 @@ export class BuildCli {
         this.buildOptions = buildOptions;
     }
 
-    listen(): void {
+    listen(exit: () => void): void {
         readline.emitKeypressEvents(process.stdin);
         process.stdin.setRawMode(true);
         process.stdin.on("keypress", async (str, key) => {
             if (key.ctrl && key.name === "c") {
-                process.exit();
+                exit();
             } else if (Object.keys(commands).indexOf(key.name) !== -1) {
                 commands[key.name][1]();
             }
@@ -31,6 +31,7 @@ export class BuildCli {
     static refreshConsole(): void {
         console.clear();
         displayLogo();
+        Logger.debug("Running in debug mode");
 
         Object.keys(commands).forEach((key: keyof typeof commands) => {
             let r = "";

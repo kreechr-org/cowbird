@@ -46,6 +46,11 @@ export const postInitInstructions = (projectName: string): void => {
 
 export class Logger {
 
+    static debug = (message: string): void => {
+        if (process.env.COWBIRD_DEBUG === "true") {
+            console.debug(logSymbols.info + " " + message);
+        }
+    };
     static warn = (message: string): void => {
         console.warn(logSymbols.warning + chalk.yellow(` ${message}`));
     };
@@ -58,7 +63,7 @@ export class Logger {
         });
         console.log(" [" + chalk.gray(time) + "]" + logSymbols.info + " " + message);
     };
-    static error = (message: string, options?: { kill?: boolean, ourFault?: boolean }): void => {
+    static error = (message: string, options: { kill?: boolean, ourFault?: boolean } = {}): void => {
         console.log(logSymbols.error + chalk.red(" Ran into a problem"));
         console.log(chalk.gray(message));
         console.log(chalk.red("\n"));
@@ -73,5 +78,12 @@ export class Logger {
 
     static loading = (message: string): Ora => {
         return ora({text: message, discardStdin: false}).start();
+    };
+
+    static exitMessage = () => {
+        console.log();
+        console.log();
+        console.log();
+        console.log(chalk.cyan("*Chirp* _Moo_ - C U!"));
     };
 }

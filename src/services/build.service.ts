@@ -2,7 +2,8 @@ import {build} from "esbuild";
 import path from "path";
 import {GenericService} from "./generic.service.js";
 import {findEntryPoints} from "../lib/fileUtils/findEntryPoints.js";
-import {CowbirdPlugin} from "../core/CowbirdPlugin.js";
+import {initCowbirdPlugin} from "../core/CowbirdPlugin.js";
+import {Logger} from "../lib/logger.js";
 
 interface IBuildService {
     watch?: boolean;
@@ -16,6 +17,12 @@ export class BuildService extends GenericService implements IBuildService {
         this.watch = options.watch;
     }
 
+
+    private exit() {
+        Logger.exitMessage();
+        process.exit(0);
+    }
+
     build() {
         return build({
             outdir: this.outDir,
@@ -25,7 +32,7 @@ export class BuildService extends GenericService implements IBuildService {
             treeShaking: true,
             bundle: true,
             minify: !this.watch,
-            plugins: [CowbirdPlugin]
+            plugins: [initCowbirdPlugin(this.exit)]
         });
     }
 
