@@ -31,15 +31,39 @@ variable "role" {
   type        = string
 }
 
-variable "executing_agw" {
+variable "agw_execution_arn" {
   description = "The Api Gateway that will act as the trigger for the lambda"
   type        = string
+  default     = null
+}
+
+variable "sqs_arn" {
+  description = "The SQS that will act as the trigger for the lambda"
+  type        = string
+  default     = null
+}
+
+variable "trigger" {
+  description = "This determines whether we trigger using an AGW or SQS"
+  type        = string
+  default     = "agw"
+
+  validation {
+    condition     = length(regexall("^(agw|sqs)$", var.trigger)) > 0
+    error_message = "ERROR: Valid types are \"agw\" and \"sqs\"!"
+  }
 }
 
 variable "environment" {
   description = "The environment variables to pass to the Lambda function"
   type        = map(string)
-  default     = {
+  default = {
     placeholder = "cannot be empty object"
   }
+}
+
+variable "layers" {
+  description = "Layers for the lambda"
+  type        = list(string)
+  default     = []
 }

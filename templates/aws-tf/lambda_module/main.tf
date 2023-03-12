@@ -7,6 +7,7 @@ resource "aws_lambda_function" "lambdaFunction" {
   filename         = var.zip_path
   handler          = var.handler
   source_code_hash = filebase64sha256(var.zip_path)
+  layers           = var.layers
   environment {
     variables = var.environment
   }
@@ -18,10 +19,19 @@ resource "aws_cloudwatch_log_group" "lambdaFunction_logs" {
 }
 
 resource "aws_lambda_permission" "api_gw" {
+  count         = var.trigger == "agw" ? 1 : 0
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambdaFunction.function_name
   principal     = "apigateway.amazonaws.com"
+  source_arn    = "${var.agw_execution_arn}/*/*"
+}
 
-  source_arn = "${var.executing_agw}/*/*"
+resource "aws_lambda_permission" "with_sqs" {
+  count         = var.trigger == "sqs" ? 1 : 0
+  statement_id  = "AllowExecutionFromSQS"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambdaFunction.function_name
+  principal     = "sqs.amazonaws.com"
+  source_arn    = var.sqs_arn
 }
